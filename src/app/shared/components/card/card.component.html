@@ -1,19 +1,26 @@
-<div class="mt-[100px]">
-    <div class="w-[350px] h-[228px] bg-white dark:bg-verydarkblack rounded-[6px]">
-    <div class=" absolute ml-[32px] mt-[-25px] w-[50px] h-[50px] rounded-[15px] bg-[#E99210]"></div>
+
+    <div class="mt-[100px] ">
+     <button (click)="navigateToJobDetails()">
+
         
-        <div class="flex flex-col justify-start items-start ml-[32px] gap-[32px]  pt-[49px] ">
-            <div class="flex flex-col justify-start items-start gap-[12px]">
-                <div class="flex justify-start items-center gap[20px] text-darkgray"> <span class="mr-[18px]">5h ago</span>  <span class="w-[4px] h-[4px] mr-[18px] mt-[10px] bg-darkgray rounded"></span><span>Full time</span> </div>
-                <p class="font-bold text-midnight text-md dark:text-white">Senior Software Engineer</p>
-                <p class="text-darkgray">scoot</p>
-
+        <div class="w-[350px] h-[228px] bg-white dark:bg-verydarkblack rounded-[6px]">
+        <div class="flex flex-col justify-center items-center absolute ml-[32px] mt-[-25px] w-[50px] h-[50px] rounded-[15px] " [ngStyle]="{'backgroundColor': job?.logoBackground}"><img  [src]="job?.logo" alt=""></div>
+            
+            <div class="flex flex-col justify-start items-start ml-[32px] gap-[32px]  pt-[49px] ">
+                <div class="flex flex-col justify-start items-start gap-[12px]">
+                    <div class="flex justify-start items-center gap[20px] text-darkgray"> <span class="mr-[18px]">{{job?.postedAt}}</span>  <span class="w-[4px] h-[4px] mr-[18px] mt-[10px] bg-darkgray rounded"></span><span>{{job?.contract}}</span> </div>
+                    <p class="font-bold text-midnight text-md dark:text-white">{{job?.position}}</p>
+                    <p class="text-darkgray">{{job?.company}}</p>
+    
+                </div>
+                <div>
+                    <p class="text-violet font-bold text-xsm ">{{job?.location}}</p>
+    
+                </div>
+    
             </div>
-            <div>
-                <p class="text-violet font-bold text-xsm ">united kingdom</p>
-
-            </div>
-
         </div>
+    </button>
     </div>
-</div>
+    
+
