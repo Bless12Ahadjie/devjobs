@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { JobdetailsComponent } from './shared/layouts/jobdetails/jobdetails.component';
+import { JobdetailsComponent } from './shared/pages/jobdetails/jobdetails.component';
 import { ApplayoutComponent } from './shared/pages/applayout/applayout.component';
 
 export const routes: Routes = [

@@ -5,4 +5,9 @@
 
 body{
     background-color: #F4F6F8;
+    overflow-x: hidden; 
 }
+
+.list-style-pink {
+    @apply list-disc pl-4;
+  }
