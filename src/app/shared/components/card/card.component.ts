@@ -16,6 +16,6 @@ export class CardComponent {
   constructor(private router: Router) {}
   
   navigateToJobDetails() {
-    // this.router.navigate(['job-details', this.job.id]);
+    this.router.navigate(['details',this.job?.id]);
   }
 }

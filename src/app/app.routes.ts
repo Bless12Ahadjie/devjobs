@@ -4,5 +4,5 @@ import { ApplayoutComponent } from './shared/pages/applayout/applayout.component
 
 export const routes: Routes = [
     {'path': '' , component: ApplayoutComponent},
-    {'path': 'details' , component: JobdetailsComponent},
+    {'path': 'details/:id' , component: JobdetailsComponent},
 ];

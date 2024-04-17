@@ -1,12 +1,12 @@
 <div class=" flex flex-col justify-center items-center ">
     <div class="flex justify-start mt-[12px] items-center gap-[286px]  w-[730px] h-[140px] rounded-[6px] bg-white dark:bg-verydarkblack">
         <div class="flex justify-start items-center gap-[42px]">
-            <div class="bg-[#E99210] w-[140px] h-[140px] rounded-bl-lg">
-        
+            <div class=" w-[140px] h-[140px] rounded-bl-lg flex flex-col justify-center items-center" [ngStyle]="{'backgroundColor': details?.logoBackground}">
+                        <img [src]="details?.logo" alt="">
             </div>
            <div>
-              <p class="text-midnight font-bold text-lg dark:text-white">Scoot</p>
-              <p class="text-darkgray">scoot.com</p>
+              <p class="text-midnight font-bold text-lg dark:text-white">{{details?.company}}</p>
+              <p class="text-darkgray">{{details?.company}}.com</p>
            </div>
         </div>
 
