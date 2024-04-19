@@ -1,9 +1,13 @@
 <div class="dark:bg-midnight">
     
     <devjobs-filter></devjobs-filter>
-    <devjobs-cardbody></devjobs-cardbody>
+    <devjobs-cardbody #cardbodyRef></devjobs-cardbody>
     <div class="flex flex-wrap justify-center items-center py-[56px] ">
-        <devjobs-button btnName="Load More"></devjobs-button>
+        <button class="w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler"
+        (click)="onLoadMore()"
+        >
+           Load More
+        </button>
     </div>
 
 </div>

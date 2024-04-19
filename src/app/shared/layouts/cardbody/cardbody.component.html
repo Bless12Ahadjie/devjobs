@@ -1,10 +1,12 @@
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-center items-center max-w-[1100px] mx-auto py-10">
-    @for (job of jobs; track $index)
-    {
-        <devjobs-card [job]="job"></devjobs-card>
-    }
+<div class="flex flex-col justify-center items-center">
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-8 justify-center items-center max-w-[1100px] mx-auto py-10">
+        @for (job of jobs; track $index)
+        {
+            <devjobs-card [job]="job"></devjobs-card>
+        }
+    </div>
+        
 </div>
-    
 
 
 
