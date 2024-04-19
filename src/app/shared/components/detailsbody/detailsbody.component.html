@@ -19,7 +19,7 @@
                 {{details?.requirements?.content}}
             </p>
             
-        <ul class="list-disc list-style pl-4 text-darkgray">
+        <ul class="marker:text-violet list-disc list-style pl-4 text-darkgray">
             @for (requirements of details?.requirements?.items; track $index) {
                 <li class="pl-4">{{requirements}}</li>
             }
@@ -35,12 +35,12 @@
                 {{details?.role?.content}}
             </p>
             
-        <ol class="list-decimal  list-outside list-style pl-4 text-darkgray">
-            <ul class="list-disc list-style pl-4 text-darkgray">
+        <ol class="marker:text-violet list-decimal  list-style pl-4  text-darkgray">
+            
                 @for (role of details?.role?.items; track $index) {
                     <li class="pl-4">{{role}}</li>
                 }
-            </ul>
+    
         </ol>
     
 

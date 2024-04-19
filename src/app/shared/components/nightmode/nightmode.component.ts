@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'devjobs-nightmode',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './nightmode.component.html',
   styleUrl: './nightmode.component.css'
 })
@@ -26,4 +27,6 @@ export class NightmodeComponent {
     localStorage.setItem('isDarkMode', this.isDarkMode? 'dark' : 'light');
     document.body.classList.toggle('dark', this.isDarkMode);
   }
+
+
 }

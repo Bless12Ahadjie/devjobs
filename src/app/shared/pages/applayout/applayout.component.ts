@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./applayout.component.css']
 })
 export class ApplayoutComponent {
+ btnName = 'load more';
+
   @ViewChild(CardbodyComponent, { static: true }) cardbodyRef?: CardbodyComponent;
 
   onLoadMore() {
