@@ -1,5 +1,5 @@
 <div class=" flex flex-col justify-center items-center">
-    <div class="flex justify-center absolute mt-[12px] items-center gap-[20px] lg:gap-[50px] pl-[8px] md:w-[720px] lg:w-[1096px] h-[80px] rounded-[6px] bg-white dark:bg-verydarkblack">
+    <div class="hidden md:flex justify-center  absolute mt-[12px] items-center gap-[20px] lg:gap-[20px] pl-[8px] md:w-[720px] lg:w-[990px] h-[80px] rounded-[6px] bg-white dark:bg-verydarkblack">
 
         <div class="flex justify-start items-center gap-[16px]">
             <img src="./assets/desktop/icon-search.svg" alt="search">
@@ -19,5 +19,15 @@
               </label>      
         </div>
         <devjobs-button btnName="Search"></devjobs-button>
+    </div>
+
+    <div class="flex justify-center items-center rounded-[6px] md:hidden  w-[327px] h-[80px] bg-white dark:bg-verydarkblack absolute mt-[10px]">
+        <div class="flex justify-start items-center gap-[16px]">
+            <input class="md:w-[105px] lg:w-[154px] dark:bg-verydarkblack focus:outline-none dark:text-white caret-violet" type="text" placeholder="Filter by location...">
+            <img src="./assets/mobile/icon-filter.svg" alt="location">
+            <button class="w-[48px] h-[48px] rounded-[5px] bg-violet hover:bg-lightvioler">
+                <img src="./assets/" alt="">
+            </button>
+        </div>
     </div>
 </div>
