@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NightmodeComponent } from '../nightmode/nightmode.component';
+import { NightmodeComponent } from '../../components/nightmode/nightmode.component';
 
 @Component({
   selector: 'devjobs-header',
