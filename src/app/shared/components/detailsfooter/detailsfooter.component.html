@@ -4,6 +4,6 @@
             <p class="text-xl font-bold text-midnight dark:text-white">{{details?.position}}</p>
             <p class="text-darkgray text-sm">{{details?.location}}</p>
         </div>
-        <devjobs-button  btnName="Apply Now"></devjobs-button>
+        <devjobs-button [href]="details?.apply" btnName="Apply Now"></devjobs-button>
     </div>
 </div>

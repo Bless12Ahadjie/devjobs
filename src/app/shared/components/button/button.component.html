@@ -1,3 +1,12 @@
-<button class="md:w-[80px] lg:w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler">
-{{btnName}}
-</button>
+@if (href) {
+    <a [href]="href" class="md:w-[80px] lg:w-[141px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler py-[13px] px-[28px]">
+        {{btnName}}
+    </a>
+        
+}@else {
+    <button class="md:- lg:w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler">
+        {{btnName}}
+        </button>
+        
+}
+
