@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
-import { DataServiceService } from '../../../core/services/data-service.service';
+import { DataService } from '../../../core/services/data.service';
 import { job } from '../../../core/Types/Types';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -11,13 +11,13 @@ import { CommonModule } from '@angular/common';
   imports: [ButtonComponent,CommonModule],
   templateUrl: './detailsbody.component.html',
   styleUrl: './detailsbody.component.css',
-  providers: [DataServiceService]
+  providers: [DataService]
 })
 export class DetailsbodyComponent {
 
   details?: job;
 
-  constructor( private dataService: DataServiceService, private router: Router ) {}
+  constructor( private dataService: DataService, private router: Router ) {}
  
   ngOnInit() {
     this.dataService.getRouteParam('id').subscribe(id => {      

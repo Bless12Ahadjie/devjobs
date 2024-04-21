@@ -21,6 +21,7 @@ export class CardbodyComponent implements OnInit {
   ngOnInit() {
     this.currentPage = this.getInitialPage();
     this.loadJobs();
+    // this.navigateBack();
   }
 
   loadJobs() {

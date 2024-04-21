@@ -10,9 +10,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, RouterOutlet,HeaderComponent,ApplayoutComponent,HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [CommonModule]
 })
 export class AppComponent  {
 
   title = 'devjobs';
+
 }

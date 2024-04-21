@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DataServiceService {
+export class DataService {
   constructor(private route: ActivatedRoute) {}
 
   getJobDetails(id: number): job {
