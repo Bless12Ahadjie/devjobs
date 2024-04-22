@@ -25,7 +25,8 @@ export class CardbodyComponent implements OnInit {
 
   title = '';
   locations = '';
-  isChecked = false;
+  fullTimeOnly = false;
+  showModal = false;
 
   constructor(
     private location: Location,
@@ -43,6 +44,11 @@ export class CardbodyComponent implements OnInit {
     this.filterService.filteredJobs$.subscribe((filteredJobs) => {
       this.jobs = filteredJobs;
     });
+  }
+
+  
+  activateModal(){
+    this.showModal = true;    
   }
 
   loadJobs() {
@@ -84,6 +90,7 @@ export class CardbodyComponent implements OnInit {
     )).value;
     this.filterService.filterJobsBySearch(this.title);
     this.filterService.filterJobsByLocation(this.locations);
-    this.filterService.filterJobsByContract(this.isChecked);
+    this.filterService.filterJobsByContract(this.fullTimeOnly);
   }
+
 }

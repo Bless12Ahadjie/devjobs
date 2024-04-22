@@ -13,7 +13,9 @@ module.exports = {
       'white': '#FFFFFF',
       'lightgray': '#F4F6F8',
       'gray': '#9DAEC2',
-      'darkgray': '#6E8098'
+      'darkgray': '#6E8098',
+      modalOverlayDark: "rgb(21, 22, 25, 0.5)",
+      modalOverlay: "rgba(124, 129, 135, 0.5)",
     },
     fontSize:{
       'xl':'28px',
