@@ -75,3 +75,13 @@ body{
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  .wrap-text {
+    white-space: normal; /* Allow the text to wrap */
+    word-break: break-all; /* Break the text at any character if it reaches the maximum width */
+  }
+  .job-title {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide any overflowing text */
+    text-overflow: ellipsis; /* Show ellipsis when text is cut off */
+  }
