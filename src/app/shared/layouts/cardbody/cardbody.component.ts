@@ -5,37 +5,53 @@ import { job } from '../../../core/Types/Types';
 import { CommonModule, Location } from '@angular/common';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { SkeletonComponent } from '../../components/skeleton/skeleton.component';
-
+import { FilterService } from '../../../core/services/filter/filter.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'devjobs-cardbody',
   standalone: true,
-  imports: [CardComponent, CommonModule,SkeletonComponent],
+  imports: [CardComponent, CommonModule, SkeletonComponent,FormsModule],
   templateUrl: './cardbody.component.html',
-  styleUrls: ['./cardbody.component.css']
+  styleUrls: ['./cardbody.component.css'],
+  providers: [FilterService]
 })
 export class CardbodyComponent implements OnInit {
   jobs: job[] = [];
   maxItemsPerPage = 12;
   currentPage: number = 1;
-  isLoading =true;
+  isLoading = true;
+  checked = false;
 
-  constructor(private location: Location, private router: Router, private route: ActivatedRoute) {}
+  title = '';
+  locations = '';
+  isChecked = false;
+
+  constructor(
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute,
+    private filterService: FilterService
+  ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.currentPage = params['page'] ? +params['page'] : 1;
       this.loadJobs();
     });
+
+    this.filterService.filteredJobs$.subscribe(filteredJobs => {
+      this.jobs = filteredJobs;
+    });
   }
+
   loadJobs() {
     const startIndex = (this.currentPage - 1) * this.maxItemsPerPage;
     const endIndex = startIndex + this.maxItemsPerPage;
     this.jobs = data.slice(startIndex, endIndex);
-    setTimeout(()=> {
+    setTimeout(() => {
       this.isLoading = false;
     }, 2000);
-    
   }
 
   loadMore() {
@@ -43,7 +59,6 @@ export class CardbodyComponent implements OnInit {
     this.saveCurrentPage();
     this.loadJobs();
     this.updateUrlWithPageParam();
- 
   }
 
   private saveCurrentPage() {
@@ -58,8 +73,11 @@ export class CardbodyComponent implements OnInit {
     });
   }
 
-  filterFullTime() {
-    return this.jobs.filter(job => job.contract.includes('Full Time'));
+  filterJobs() {
+    this.title = (<HTMLInputElement>document.querySelector('input[placeholder="Filter by title, companies, expertise…"]')).value;
+    this.locations = (<HTMLInputElement>document.querySelector('input[placeholder="Filter by location..."]')).value;
+    this.filterService.filterJobsBySearch(this.title);
+    this.filterService.filterJobsByLocation(this.locations);
+    this.filterService.filterJobsByContract(this.isChecked);
   }
-
 }

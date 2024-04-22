@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
-import { DataService } from '../../../core/services/data.service';
+import { DataService } from '../../../core/services/data/data.service';
 import { job } from '../../../core/Types/Types';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';

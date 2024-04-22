@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { DataService } from '../../../core/services/data.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DataService } from '../../../core/services/data/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'devjobs-filter',
   standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css'],
   providers: [DataService]
@@ -15,31 +13,18 @@ export class FilterComponent {
   title = "";
   location = "";
   isChecked = false;
+  filteredJobs: any[] = [];
+  private subscription: Subscription | null = null;
 
   constructor(private dataService: DataService) {}
-  ngOnInit(): void {
-  this.dataService.filteredJobs$.subscribe((data:any) => {
-  this.title = data.title;
-  
-})
-    
-  }
+
 
   checked() {
     this.isChecked = !this.isChecked;
+    this.filterJobs();
   }
 
-  filterFullTime() {
-    if (this.isChecked) {
-      this.dataService.filterJobsByContract('Full Time');
-    } else {
-      this.dataService.filterJobsByContract('');
-    }
-  }
+  filterJobs() {
 
-  filterJobsBySearch() {
-    console.log('sdfdsfs');
-    
-    this.dataService.filterJobsBySearch(this.title);
   }
 }

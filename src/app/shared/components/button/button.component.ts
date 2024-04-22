@@ -1,5 +1,5 @@
 import { Component, Input,inject } from '@angular/core';
-import { DataService } from '../../../core/services/data.service';
+import { DataService } from '../../../core/services/data/data.service';
 
 @Component({
   selector: 'devjobs-button',

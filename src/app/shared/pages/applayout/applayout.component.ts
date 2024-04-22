@@ -19,4 +19,6 @@ export class ApplayoutComponent {
   onLoadMore() {
     this.cardbodyRef?.loadMore();
   }
+
+  isloading = this.cardbodyRef?.isLoading;
 }

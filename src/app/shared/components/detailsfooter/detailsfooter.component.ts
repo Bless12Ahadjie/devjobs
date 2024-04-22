@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { job } from '../../../core/Types/Types';
-import { DataService } from '../../../core/services/data.service';
+import { DataService } from '../../../core/services/data/data.service';
 
 @Component({
   selector: 'devjobs-detailsfooter',

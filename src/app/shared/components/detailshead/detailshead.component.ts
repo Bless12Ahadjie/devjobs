@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { CommonModule } from '@angular/common';
-import { DataService } from '../../../core/services/data.service';
+import { DataService } from '../../../core/services/data/data.service';
 import { job } from '../../../core/Types/Types';
 
 @Component({
