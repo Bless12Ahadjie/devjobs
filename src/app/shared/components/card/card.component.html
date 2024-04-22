@@ -10,7 +10,7 @@
             <div class="flex flex-col justify-start items-start ml-[28px] gap-[32px]  pt-[49px] ">
                 <div class="flex flex-col justify-start items-start gap-[12px]">
                     <div class="flex justify-start items-center gap[20px] text-darkgray"> <span class="mr-[18px]">{{job?.postedAt}}</span>  <span class="w-[4px] h-[4px] mr-[18px] mt-[10px] bg-darkgray rounded"></span><span>{{job?.contract}}</span> </div>
-                    <p class="font-bold text-midnight text-md dark:text-white">{{job?.position}}</p>
+                    <p class="font-bold text-midnight text-left text-md dark:text-white max-w-[260px] wrap-text job-title">{{job?.position}}</p>
                     <p class="text-darkgray">{{job?.company}}</p>
     
                 </div>

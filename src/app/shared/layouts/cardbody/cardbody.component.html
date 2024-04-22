@@ -1,15 +1,24 @@
 <div class="flex flex-col justify-center items-center">
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5 lg:gap-4 justify-center items-center max-w-[1110px] mt-[40px] md:mt-[80px] ">
+
+    <div
+        class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5 lg:gap-4 justify-center items-center max-w-[1110px] mt-[40px] md:mt-[80px] ">
+
+
         @for (job of jobs; track job.id)
+
         {
-            <devjobs-card [job]="job"></devjobs-card>
+        @if (isLoading) {
+        <devjobs-skeleton></devjobs-skeleton>
+
         }
-        <!-- @empty {
-           <div class="flex mt-[52px] w-[100px] pl-[502px] flex-col justify-center items-center h-full">
-            <h1 class="font-bold text-xl text-center text-midnight dark:text-white">No more jobs found</h1>
-           </div>
-        } -->
+        @else {
+        <devjobs-card [job]="job"></devjobs-card>
+        }
+
+        }
+
+
     </div>
-    <!-- <button class="bg-violet" (click)="navigateBack()"></button> -->
+
 
 </div>
