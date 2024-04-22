@@ -4,7 +4,7 @@ import data from '../../data/data.json';
 import { job } from '../../Types/Types';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilterService {
   private jobData: job[] = [];
@@ -36,22 +36,25 @@ export class FilterService {
 
   private applyFilters(): void {
     let filteredJobs = this.jobData;
-  
+
     if (this.title) {
-      filteredJobs = filteredJobs.filter(job =>
-        job.position.toLowerCase().includes(this.title.toLowerCase()) ||
-        job.company.toLowerCase().includes(this.title.toLowerCase())
+      filteredJobs = filteredJobs.filter(
+        (job) =>
+          job.position.toLowerCase().includes(this.title.toLowerCase()) ||
+          job.company.toLowerCase().includes(this.title.toLowerCase())
       );
     }
-  
+
     if (this.location) {
-      filteredJobs = filteredJobs.filter(job => job.location.toLowerCase().includes(this.location.toLowerCase()));
+      filteredJobs = filteredJobs.filter((job) =>
+        job.location.toLowerCase().includes(this.location.toLowerCase())
+      );
     }
-  
+
     if (this.isFullTime) {
-      filteredJobs = filteredJobs.filter(job => job.contract === 'Full Time');
+      filteredJobs = filteredJobs.filter((job) => job.contract === 'Full Time');
     }
-  
+
     this.filteredJobsSource.next(filteredJobs);
   }
 }

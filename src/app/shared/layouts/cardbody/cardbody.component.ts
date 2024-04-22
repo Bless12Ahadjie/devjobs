@@ -11,10 +11,10 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'devjobs-cardbody',
   standalone: true,
-  imports: [CardComponent, CommonModule, SkeletonComponent,FormsModule],
+  imports: [CardComponent, CommonModule, SkeletonComponent, FormsModule],
   templateUrl: './cardbody.component.html',
   styleUrls: ['./cardbody.component.css'],
-  providers: [FilterService]
+  providers: [FilterService],
 })
 export class CardbodyComponent implements OnInit {
   jobs: job[] = [];
@@ -35,12 +35,12 @@ export class CardbodyComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.currentPage = params['page'] ? +params['page'] : 1;
       this.loadJobs();
     });
 
-    this.filterService.filteredJobs$.subscribe(filteredJobs => {
+    this.filterService.filteredJobs$.subscribe((filteredJobs) => {
       this.jobs = filteredJobs;
     });
   }
@@ -69,13 +69,19 @@ export class CardbodyComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { page: this.currentPage },
-      queryParamsHandling: 'merge'
+      queryParamsHandling: 'merge',
     });
   }
 
   filterJobs() {
-    this.title = (<HTMLInputElement>document.querySelector('input[placeholder="Filter by title, companies, expertise…"]')).value;
-    this.locations = (<HTMLInputElement>document.querySelector('input[placeholder="Filter by location..."]')).value;
+    this.title = (<HTMLInputElement>(
+      document.querySelector(
+        'input[placeholder="Filter by title, companies, expertise…"]'
+      )
+    )).value;
+    this.locations = (<HTMLInputElement>(
+      document.querySelector('input[placeholder="Filter by location..."]')
+    )).value;
     this.filterService.filterJobsBySearch(this.title);
     this.filterService.filterJobsByLocation(this.locations);
     this.filterService.filterJobsByContract(this.isChecked);
