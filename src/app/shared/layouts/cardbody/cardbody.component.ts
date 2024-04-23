@@ -36,10 +36,11 @@ export class CardbodyComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      this.currentPage = params['page'] ? +params['page'] : 1;
+      const page = params['page'];
+      this.currentPage = page ? Number(page) || 1 : 1;
       this.loadJobs();
     });
-
+  
     this.filterService.filteredJobs$.subscribe((filteredJobs) => {
       this.jobs = filteredJobs;
     });
@@ -74,11 +75,13 @@ export class CardbodyComponent implements OnInit {
   }
 
   private updateUrlWithPageParam() {
-    this.router.navigate([], {
+    const navigationExtras: NavigationExtras = {
       relativeTo: this.route,
       queryParams: { page: this.currentPage },
       queryParamsHandling: 'merge',
-    });
+    };
+  
+    this.router.navigate([], navigationExtras);
   }
 
   filterJobs() {
