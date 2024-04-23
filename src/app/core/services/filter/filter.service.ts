@@ -7,7 +7,7 @@ import { job } from '../../Types/Types';
   providedIn: 'root',
 })
 export class FilterService {
-  private jobData: job[] = [];
+  public jobData: job[] = [];
   public filteredJobsSource = new BehaviorSubject<job[]>([]);
   filteredJobs$ = this.filteredJobsSource.asObservable();
   title = '';

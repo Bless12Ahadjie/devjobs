@@ -18,10 +18,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class CardbodyComponent implements OnInit {
   jobs: job[] = [];
-  maxItemsPerPage = 12;
-  currentPage: number = 1;
   isLoading = true;
-
+  itemsPerPage = 12;
   title = '';
   locations = '';
   fullTimeOnly = false;
@@ -35,15 +33,13 @@ export class CardbodyComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      const page = params['page'];
-      this.currentPage = page ? Number(page) || 1 : 1;
-      this.loadJobs();
-    });
+    this.loadJobs();
   
     this.filterService.filteredJobs$.subscribe((filteredJobs) => {
-      this.jobs = filteredJobs;
+      this.jobs = filteredJobs.slice(0, this.itemsPerPage);
     });
+
+    
   }
 
   checked() {
@@ -55,34 +51,42 @@ export class CardbodyComponent implements OnInit {
   }
 
   loadJobs() {
-    const startIndex = (this.currentPage - 1) * this.maxItemsPerPage;
-    const endIndex = startIndex + this.maxItemsPerPage;
-    this.jobs = data.slice(startIndex, endIndex);
+    this.jobs = data.slice(0, this.itemsPerPage);
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
   }
 
-  loadMore() {
-    this.currentPage++;
-    this.saveCurrentPage();
-    this.loadJobs();
-    this.updateUrlWithPageParam();
-  }
-
-  private saveCurrentPage() {
-    localStorage.setItem('currentPage', this.currentPage.toString());
-  }
-
-  private updateUrlWithPageParam() {
-    const navigationExtras: NavigationExtras = {
-      relativeTo: this.route,
-      queryParams: { page: this.currentPage },
-      queryParamsHandling: 'merge',
-    };
   
-    this.router.navigate([], navigationExtras);
+  loadMore() {
+    const currentPage = Math.ceil(this.jobs.length / this.itemsPerPage);
+    const startIndex = currentPage * this.itemsPerPage;
+    const endIndex = Math.min(startIndex + this.itemsPerPage, this.filterService.jobData.length);
+  
+    if (startIndex < endIndex) {
+      const newJobs = this.filterService.jobData.slice(startIndex, endIndex);
+      this.jobs = [...this.jobs, ...newJobs];
+    } else {
+      console.log('No more jobs to load');
+    }
+  
+    const element = document.getElementById('element-id');
+    const distanceFromTop = element?.getBoundingClientRect().top;
+    window.scrollTo({
+      top: distanceFromTop,
+      behavior: 'smooth'
+    });
   }
+  
+  
+  
+  
+  
+
+  // private saveCurrentPage() {
+  //   localStorage.setItem('currentPage', this.currentPage.toString());
+  // }
+
 
   filterJobs() {
     this.title = (<HTMLInputElement>(
