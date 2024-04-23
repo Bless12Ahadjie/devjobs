@@ -8,27 +8,22 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'devjobs-detailsbody',
   standalone: true,
-  imports: [ButtonComponent,CommonModule],
+  imports: [ButtonComponent, CommonModule],
   templateUrl: './detailsbody.component.html',
   styleUrl: './detailsbody.component.css',
-  providers: [DataService]
+  providers: [DataService],
 })
 export class DetailsbodyComponent {
-
   details?: job;
 
-  constructor( private dataService: DataService, private router: Router ) {}
- 
+  constructor(private dataService: DataService, private router: Router) {}
+
   ngOnInit() {
-    this.dataService.getRouteParam('id').subscribe(id => {      
+    this.dataService.getRouteParam('id').subscribe((id) => {
       this.details = this.dataService.getJobDetails(id);
- 
     });
-}
-goToApplyPage(applyLink: string) {
-  this.router.navigate([applyLink]);
-}
-
-
-
+  }
+  goToApplyPage(applyLink: string) {
+    this.router.navigate([applyLink]);
+  }
 }

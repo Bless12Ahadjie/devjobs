@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 body {
   background-color: #f4f6f8;
   overflow-x: hidden;
+  transition: all;
+  transition-duration: 1000;
 }
 
 .list-style-pink {

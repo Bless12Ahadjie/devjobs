@@ -5,33 +5,31 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, map, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
+  
   constructor(private route: ActivatedRoute) {}
 
   private jobData: job[] = [];
-
 
   setJobData(data: job[]): void {
     this.jobData = data;
   }
 
- public getJobData(): job[] {
+  public getJobData(): job[] {
     return this.jobData;
   }
 
- public getJobDetails(id: number): job {
+  public getJobDetails(id: number): job {
     return data[id - 1];
   }
 
- public getRouteParam(paramName: string): Observable<number> {
+  public getRouteParam(paramName: string): Observable<number> {
     return this.route.paramMap.pipe(
-      map(params => {
+      map((params) => {
         return Number(params.get(paramName));
       })
     );
   }
-
-  
 }
