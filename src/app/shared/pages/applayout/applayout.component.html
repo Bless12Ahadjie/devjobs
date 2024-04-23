@@ -3,10 +3,17 @@
     <devjobs-cardbody #cardbodyRef></devjobs-cardbody>
     <div class="flex flex-wrap justify-center items-center py-[56px] ">
 
-        <button class="w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler"
+        @if (cardbodyRef.jobs.length > 0) {
+            <button class="w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler"
             (click)="onLoadMore()">
             {{btnName | titlecase}}
         </button>
+        }
+        @else {
+          <h1 class="text-violet dark:bg-white text-sm">No more jobs to show</h1>
+        }
+
+       
 
     </div>
 

@@ -59,7 +59,7 @@ export class CardbodyComponent implements OnInit {
     this.jobs = data.slice(startIndex, endIndex);
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+    }, 1000);
   }
 
   loadMore() {

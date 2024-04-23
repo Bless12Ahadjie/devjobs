@@ -85,9 +85,7 @@
     <div
         class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5 lg:gap-4 justify-center items-center max-w-[1110px] mt-[40px] md:mt-[80px] ">
 
-
         @for (job of jobs; track job.id)
-
         {
         @if (isLoading) {
         <devjobs-skeleton></devjobs-skeleton>
@@ -99,8 +97,8 @@
 
         }
 
-
     </div>
+
 
 
 </div>

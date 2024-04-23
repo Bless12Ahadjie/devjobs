@@ -4,11 +4,11 @@
 
 
 
-body {
+body{
   background-color: #f4f6f8;
   overflow-x: hidden;
-  transition: all;
-  transition-duration: 1000;
+  transition-property: background-color;
+  transition: 200ms ease-in;
 }
 
 .list-style-pink {
