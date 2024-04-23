@@ -50,13 +50,8 @@ export class FilterService {
         job.location.toLowerCase().includes(this.location.toLowerCase())
       );
     }
-
     if (this.isFullTime) {
-      filteredJobs = filteredJobs.filter((job) => {
-        if (this.isFullTime){
-          job.contract === 'Full Time'
-        }
-       });
+      filteredJobs = filteredJobs.filter((job) => job.contract === 'Full Time');
     }
 
     this.filteredJobsSource.next(filteredJobs);

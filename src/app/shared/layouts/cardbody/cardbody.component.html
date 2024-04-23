@@ -7,20 +7,20 @@
                 class="md:w-[105px] lg:w-[268px] dark:bg-verydarkblack focus:outline-none dark:text-white caret-violet"
                 type="text" placeholder="Filter by title, companies, expertise…">
         </div>
-        <span class="w-[1px] h-[80px] bg-[#F4F6F8] dark:bg-[#6E8098]"></span>
+        <span class="w-[1px] h-[80px] bg-[#F4F6F8] dark:bg-[#2A3342]"></span>
         <div class="flex justify-start items-center gap-[16px]">
             <img src="./assets/desktop/icon-location.svg" alt="location">
             <input [(ngModel)]="locations" (keyup.enter)="filterJobs()"
                 class="md:w-[105px] lg:w-[154px] dark:bg-verydarkblack focus:outline-none dark:text-white caret-violet"
                 type="text" placeholder="Filter by location...">
         </div>
-        <span class="w-[1px] h-[80px] bg-[#F4F6F8] dark:bg-[#6E8098]"></span>
+        <span class="w-[1px] h-[80px] bg-[#F4F6F8] dark:bg-[#2A3342]"></span>
         <div class="">
             <label
-                class="container flex justify-center items-center text-sm font-bold  text-verydarkblack dark:text-white">
-                <p>Full Time Only</p>
-                <input type="checkbox" [(ngModel)]="fullTimeOnly" class="hidden accent-violet bg-[#979797] border-[#979797] hover:border-violet">
-                <span (click)="fullTimeOnly = !fullTimeOnly" class="checkmark dark:bg-midnight rounded-[4px] mt-[4px]"></span>
+                class=" container flex justify-center items-center text-xsm font-bold  text-verydarkblack dark:text-white">
+                Full Time Only
+                <input type="checkbox" (click)="checked()" [(ngModel)]="fullTimeOnly" class="hidden">
+                <span class="checkmark dark:bg-midnight rounded-[4px] mt-[4px]"></span>
             </label>
         </div>
         <button type="submit" (click)="filterJobs()"
@@ -46,26 +46,26 @@
     <!-- Modal -->
     @if (showModal) {
     <div
-        class=" fixed inset-0 z-50 flex items-center justify-center bg-modalOverlay dark:bg-modalOverlayDark bg-opacity-50">
+        class=" fixed inset-0 z-50 flex items-center justify-center bg-modalOverlayDark dark:bg-modalOverlayDark bg-opacity-50">
         <div
             class="flex flex-col justify-center h-[217px] w-[327px] items-center  bg-white dark:bg-verydarkblack rounded-lg p-6 shadow-lg">
-            <div class="flex justify-start items-center gap-[20px] ml-[-50px]">
+            <div class="flex justify-start items-center gap-[20px] ml-[-30px]">
                 <img src="./assets/desktop/icon-location.svg" alt="location">
                 <input [(ngModel)]="locations" (keyup.enter)="filterJobs()"
                     class="md:w-[105px] lg:w-[154px] dark:bg-verydarkblack focus:outline-none dark:text-white caret-violet"
                     type="text" placeholder="Filter by location..." />
             </div>
-            <div class="w-[327px] h-[1px] bg-darkgray mb-[30px] mt-[20px]"></div>
-            <div class="ml-[-100px]">
+            <div class="w-[327px] h-[1px] bg-[#F4F6F8] dark:bg-[#2A3342] mb-[30px] mt-[20px]"></div>
+            <div class="ml-[-80px]">
                 <label
-                    class="container flex justify-center items-center text-xsm font-bold text-verydarkblack dark:text-white">
+                    class=" container flex justify-center items-center text-xsm font-bold  text-verydarkblack dark:text-white">
                     Full Time Only
-                    <input [(ngModel)]="checked" [(ngModel)]="fullTimeOnly" type="checkbox"
-                        class="hidden accent-violet bg-[#979797] border-[#979797] hover:border-violet" />
-                    <span (click)="fullTimeOnly = !fullTimeOnly" class="checkmark dark:bg-midnight rounded-[4px] mt-[4px]"></span>
+                    <input type="checkbox" (click)="checked()" [(ngModel)]="fullTimeOnly" class="hidden">
+                    <span class="checkmark dark:bg-midnight rounded-[4px] mt-[4px]"></span>
                 </label>
             </div>
-            <button (click)="filterJobs(); showModal = false" class="mt-4 w-[279px] bg-violet text-white px-4 py-2 rounded">
+            <button (click)="filterJobs(); showModal = false"
+                class="mt-6 w-[279px] bg-violet text-white px-4 py-2 rounded">
                 Search
             </button>
         </div>
@@ -78,6 +78,7 @@
 </div>
 
 
+<!-- card destructuring with angular @for  -->
 
 <div class="flex flex-col justify-center items-center">
 

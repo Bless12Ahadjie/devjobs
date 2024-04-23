@@ -21,7 +21,6 @@ export class CardbodyComponent implements OnInit {
   maxItemsPerPage = 12;
   currentPage: number = 1;
   isLoading = true;
-  checked = false;
 
   title = '';
   locations = '';
@@ -46,9 +45,12 @@ export class CardbodyComponent implements OnInit {
     });
   }
 
-  
-  activateModal(){
-    this.showModal = true;    
+  checked() {
+    this.fullTimeOnly = !this.fullTimeOnly;
+  }
+
+  activateModal() {
+    this.showModal = true;
   }
 
   loadJobs() {
@@ -92,5 +94,4 @@ export class CardbodyComponent implements OnInit {
     this.filterService.filterJobsByLocation(this.locations);
     this.filterService.filterJobsByContract(this.fullTimeOnly);
   }
-
 }

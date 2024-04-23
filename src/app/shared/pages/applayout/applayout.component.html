@@ -3,10 +3,7 @@
     <devjobs-cardbody #cardbodyRef></devjobs-cardbody>
     <div class="flex flex-wrap justify-center items-center py-[56px] ">
 
-        @if (isloading) {
-
-
-        } <button class="w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler"
+        <button class="w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler"
             (click)="onLoadMore()">
             {{btnName | titlecase}}
         </button>
