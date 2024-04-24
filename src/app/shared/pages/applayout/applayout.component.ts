@@ -15,7 +15,8 @@ import { flatMap } from 'rxjs';
 })
 export class ApplayoutComponent implements OnInit {
   btnName = 'load more';
-  @ViewChild(CardbodyComponent, { static: true }) cardbodyRef?: CardbodyComponent;
+  @ViewChild(CardbodyComponent, { static: true })
+  cardbodyRef?: CardbodyComponent;
 
   isLoading = false;
   jobLength = 0;
@@ -28,8 +29,6 @@ export class ApplayoutComponent implements OnInit {
     this.filterService.filteredJobs$.subscribe((filteredJobs) => {
       this.jobLength = filteredJobs.length;
     });
-
-
   }
 
   onLoadMore() {

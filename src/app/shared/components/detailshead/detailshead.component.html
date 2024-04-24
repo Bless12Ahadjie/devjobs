@@ -1,29 +1,35 @@
 <div class=" flex flex-col justify-center items-center ">
-    <div class="hidden md:flex justify-start mt-[12px] items-center gap-[266px]  w-[730px] h-[140px] rounded-[6px] bg-white dark:bg-verydarkblack">
+    <div
+        class="hidden md:flex justify-start mt-[12px] items-center gap-[266px]  w-[730px] h-[140px] rounded-[6px] bg-white dark:bg-verydarkblack">
         <div class="flex justify-start items-center gap-[20px]">
-            <div class=" w-[140px] h-[140px] rounded-bl-lg flex flex-col justify-center items-center" [ngStyle]="{'backgroundColor': details?.logoBackground}">
-                        <img class="" [src]="details?.logo" alt="">
+            <div class=" w-[140px] h-[140px] rounded-bl-lg flex flex-col justify-center items-center"
+                [ngStyle]="{'backgroundColor': details?.logoBackground}">
+                <img class="" [src]="details?.logo" alt="">
             </div>
-           <div>
-              <p class="text-midnight font-bold text-lg w-[120px] dark:text-white">{{details?.company}}</p>
-              <p class="text-darkgray">{{details?.company}}.com</p>
-           </div>
+            <div>
+                <p class="text-midnight font-bold text-lg w-[120px] dark:text-white">{{details?.company}}</p>
+                <p class="text-darkgray">{{details?.company}}.com</p>
+            </div>
         </div>
 
-   <a class="bg-[#EEEFFC] hover:bg-[#C5C9F4] w-[147px] h-[48px] text-violet font-bold rounded-[5px] py-[10px] px-[20px]" [href]="details?.website"> company Site</a>
+        <a class="bg-[#EEEFFC] hover:bg-[#C5C9F4] w-[147px] h-[48px] text-violet font-bold rounded-[5px] py-[10px] px-[20px]"
+            [href]="details?.website"> company Site</a>
     </div>
-<!-- mobile-content -->
-    <div class="flex flex-col justify-center items-center md:hidden bg-white dark:bg-verydarkblack w-[327px] h-[205px] rounded-[6px] mt-[-15px]"    >
+    <!-- mobile-content -->
+    <div
+        class="flex flex-col justify-center items-center md:hidden bg-white dark:bg-verydarkblack w-[327px] h-[205px] rounded-[6px] mt-[-15px]">
         <div class="flex flex-col justify-center items-center gap-[20px] absolute mt-[-120px]">
-            <div class=" w-[50px] h-[50px] rounded-[15px] flex flex-col justify-center items-center" [ngStyle]="{'backgroundColor': details?.logoBackground}">
-                        <img class="" [src]="details?.logo" alt="">
+            <div class=" w-[50px] h-[50px] rounded-[15px] flex flex-col justify-center items-center"
+                [ngStyle]="{'backgroundColor': details?.logoBackground}">
+                <img class="" [src]="details?.logo" alt="">
             </div>
-           <div class="flex flex-col justify-center items-center"> 
-              <p class="text-midnight font-bold text-lg  dark:text-white">{{details?.company}}</p>
-              <p class="text-darkgray">{{details?.company}}.com</p>
-           </div>
+            <div class="flex flex-col justify-center items-center">
+                <p class="text-midnight font-bold text-lg  dark:text-white">{{details?.company}}</p>
+                <p class="text-darkgray">{{details?.company}}.com</p>
+            </div>
         </div>
-      <a class="bg-[#EEEFFC] hover:bg-[#C5C9F4] w-[147px] h-[48px] text-violet font-bold rounded-[5px] py-[10px] px-[20px] mt-[100px]" [href]="details?.website"> company Site</a>
+        <a class="bg-[#EEEFFC] hover:bg-[#C5C9F4] w-[147px] h-[48px] text-violet font-bold rounded-[5px] py-[10px] px-[20px] mt-[100px]"
+            [href]="details?.website"> company Site</a>
 
     </div>
 </div>

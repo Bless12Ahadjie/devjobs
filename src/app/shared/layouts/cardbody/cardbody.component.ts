@@ -27,7 +27,6 @@ export class CardbodyComponent implements OnInit {
   showLoadMoreButton: boolean = true;
   filteredJobsCount = 0;
 
-
   constructor(
     private location: Location,
     private router: Router,
@@ -37,7 +36,7 @@ export class CardbodyComponent implements OnInit {
 
   ngOnInit() {
     this.loadJobs();
-  
+
     this.filterService.filteredJobs$.subscribe((filteredJobs) => {
       this.jobs = filteredJobs.slice(0, this.itemsPerPage);
     });
@@ -45,9 +44,7 @@ export class CardbodyComponent implements OnInit {
     this.filterService.filteredJobsCount$.subscribe((count) => {
       this.filteredJobsCount = count;
       this.showLoadMoreButton = this.filteredJobsCount < this.itemsPerPage;
-    
     });
-    
   }
 
   checked() {
@@ -65,38 +62,32 @@ export class CardbodyComponent implements OnInit {
     }, 1000);
   }
 
-  
   loadMore() {
     const currentPage = Math.ceil(this.jobs.length / this.itemsPerPage);
     const startIndex = currentPage * this.itemsPerPage;
-    const endIndex = Math.min(startIndex + this.itemsPerPage, this.filterService.jobData.length);
-  
+    const endIndex = Math.min(
+      startIndex + this.itemsPerPage,
+      this.filterService.jobData.length
+    );
+
     if (startIndex < endIndex) {
       const newJobs = this.filterService.jobData.slice(startIndex, endIndex);
       this.jobs = [...this.jobs, ...newJobs];
-    } 
-  
+    }
+
     const element = document.getElementById('element-id');
     const distanceFromTop = element?.getBoundingClientRect().top;
     window.scrollTo({
       top: distanceFromTop,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
-  
-  
-  
-  
-  
-
-  // private saveCurrentPage() {
-  //   localStorage.setItem('currentPage', this.currentPage.toString());
-  // }
-
 
   filterJobs() {
     this.title = (<HTMLInputElement>(
-      document.querySelector('input[placeholder="Filter by title, companies, expertise…"]')
+      document.querySelector(
+        'input[placeholder="Filter by title, companies, expertise…"]'
+      )
     )).value;
     this.locations = (<HTMLInputElement>(
       document.querySelector('input[placeholder="Filter by location..."]')
@@ -104,18 +95,15 @@ export class CardbodyComponent implements OnInit {
     this.filterService.filterJobsBySearch(this.title);
     this.filterService.filterJobsByLocation(this.locations);
     this.filterService.filterJobsByContract(this.fullTimeOnly);
-  
+
     const filteredJobsCount = this.filterService.jobData.length;
 
     if (filteredJobsCount < this.itemsPerPage) {
       this.hideLoadMoreButton();
     }
   }
-  
+
   hideLoadMoreButton() {
-    this.showLoadMoreButton = false
-
+    this.showLoadMoreButton = false;
   }
-
-  
 }
