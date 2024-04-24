@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import data from '../../data/data.json';
 import { job } from '../../Types/Types';
 
@@ -11,8 +11,7 @@ export class FilterService {
 
   public filteredJobsSource = new BehaviorSubject<job[]>([]);
   public filteredJobsCountSource = new BehaviorSubject<number>(0);
-
-  filteredJobs$ = this.filteredJobsSource.asObservable();
+  filteredJobs$: Observable<job[]> = this.filteredJobsSource.asObservable();
   filteredJobsCount$ = this.filteredJobsCountSource.asObservable();
 
   title = '';
@@ -46,14 +45,14 @@ export class FilterService {
     if (this.title) {
       filteredJobs = filteredJobs.filter(
         (job) =>
-          job.position.toLowerCase().includes(this.title.toLowerCase()) ||
-          job.company.toLowerCase().includes(this.title.toLowerCase())
+          job.position?.toLowerCase().includes(this.title.toLowerCase()) ||
+          job.company?.toLowerCase().includes(this.title.toLowerCase())
       );
     }
 
     if (this.location) {
       filteredJobs = filteredJobs.filter((job) =>
-        job.location.toLowerCase().includes(this.location.toLowerCase())
+        job.location?.toLowerCase().includes(this.location.toLowerCase())
       );
     }
     if (this.isFullTime) {
