@@ -8,8 +8,10 @@ import { job } from '../../Types/Types';
 })
 export class FilterService {
   public jobData: job[] = [];
+
   public filteredJobsSource = new BehaviorSubject<job[]>([]);
   public filteredJobsCountSource = new BehaviorSubject<number>(0);
+
   filteredJobs$ = this.filteredJobsSource.asObservable();
   filteredJobsCount$ = this.filteredJobsCountSource.asObservable();
 
