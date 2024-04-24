@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { CardbodyComponent } from '../../layouts/cardbody/cardbody.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { CommonModule } from '@angular/common';
 import { FilterService } from '../../../core/services/filter/filter.service';
+import { flatMap } from 'rxjs';
 
 @Component({
   selector: 'devjobs-applayout',
@@ -12,22 +13,26 @@ import { FilterService } from '../../../core/services/filter/filter.service';
   styleUrls: ['./applayout.component.css'],
   providers: [FilterService],
 })
-export class ApplayoutComponent {
- btnName = 'load more';
-
-
+export class ApplayoutComponent implements OnInit {
+  btnName = 'load more';
   @ViewChild(CardbodyComponent, { static: true }) cardbodyRef?: CardbodyComponent;
+
+  isLoading = false;
+  jobLength = 0;
+  showLoadMoreButton = false;
+  filteredJobsCount?: number;
+
   constructor(private filterService: FilterService) {}
+
+  ngOnInit() {
+    this.filterService.filteredJobs$.subscribe((filteredJobs) => {
+      this.jobLength = filteredJobs.length;
+    });
+
+
+  }
 
   onLoadMore() {
     this.cardbodyRef?.loadMore();
   }
-
-  isloading = this.cardbodyRef?.isLoading;
-  
-  jobLength = this.filterService.jobData.length ;
- 
-
-
-  
 }

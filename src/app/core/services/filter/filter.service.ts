@@ -9,7 +9,10 @@ import { job } from '../../Types/Types';
 export class FilterService {
   public jobData: job[] = [];
   public filteredJobsSource = new BehaviorSubject<job[]>([]);
+  public filteredJobsCountSource = new BehaviorSubject<number>(0);
   filteredJobs$ = this.filteredJobsSource.asObservable();
+  filteredJobsCount$ = this.filteredJobsCountSource.asObservable();
+
   title = '';
   location = '';
   isFullTime = false;
@@ -17,6 +20,7 @@ export class FilterService {
   constructor() {
     this.jobData = data;
     this.filteredJobsSource.next(this.jobData);
+    this.filteredJobsCountSource.next(this.jobData.length);
   }
 
   filterJobsBySearch(searchTerm: string): void {
@@ -55,5 +59,6 @@ export class FilterService {
     }
 
     this.filteredJobsSource.next(filteredJobs);
+    this.filteredJobsCountSource.next(filteredJobs.length);
   }
 }

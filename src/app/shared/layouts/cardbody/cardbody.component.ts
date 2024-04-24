@@ -24,6 +24,9 @@ export class CardbodyComponent implements OnInit {
   locations = '';
   fullTimeOnly = false;
   showModal = false;
+  showLoadMoreButton: boolean = true;
+  filteredJobsCount = 0;
+
 
   constructor(
     private location: Location,
@@ -39,6 +42,11 @@ export class CardbodyComponent implements OnInit {
       this.jobs = filteredJobs.slice(0, this.itemsPerPage);
     });
 
+    this.filterService.filteredJobsCount$.subscribe((count) => {
+      this.filteredJobsCount = count;
+      this.showLoadMoreButton = this.filteredJobsCount < this.itemsPerPage;
+    
+    });
     
   }
 
@@ -66,9 +74,7 @@ export class CardbodyComponent implements OnInit {
     if (startIndex < endIndex) {
       const newJobs = this.filterService.jobData.slice(startIndex, endIndex);
       this.jobs = [...this.jobs, ...newJobs];
-    } else {
-      console.log('No more jobs to load');
-    }
+    } 
   
     const element = document.getElementById('element-id');
     const distanceFromTop = element?.getBoundingClientRect().top;
@@ -90,9 +96,7 @@ export class CardbodyComponent implements OnInit {
 
   filterJobs() {
     this.title = (<HTMLInputElement>(
-      document.querySelector(
-        'input[placeholder="Filter by title, companies, expertise…"]'
-      )
+      document.querySelector('input[placeholder="Filter by title, companies, expertise…"]')
     )).value;
     this.locations = (<HTMLInputElement>(
       document.querySelector('input[placeholder="Filter by location..."]')
@@ -100,5 +104,18 @@ export class CardbodyComponent implements OnInit {
     this.filterService.filterJobsBySearch(this.title);
     this.filterService.filterJobsByLocation(this.locations);
     this.filterService.filterJobsByContract(this.fullTimeOnly);
+  
+    const filteredJobsCount = this.filterService.jobData.length;
+
+    if (filteredJobsCount < this.itemsPerPage) {
+      this.hideLoadMoreButton();
+    }
   }
+  
+  hideLoadMoreButton() {
+    this.showLoadMoreButton = false
+
+  }
+
+  
 }
