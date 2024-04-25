@@ -35,6 +35,9 @@ module.exports = {
 
 
     extend: {
+      backgroundImage: {
+        'hero-img': "url('./assets/desktop/bg-pattern-header.svg')",
+      }
 
     },
   },

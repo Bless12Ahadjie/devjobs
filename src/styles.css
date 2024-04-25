@@ -79,3 +79,9 @@ body{
   overflow: hidden; /* Hide any overflowing text */
   text-overflow: ellipsis; /* Show ellipsis when text is cut off */
 }
+
+
+.heading{
+  background-image: url("./assets/desktop/bg-pattern-header.svg");
+  background-repeat: no-repeat;
+}
