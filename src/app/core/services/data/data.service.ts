@@ -1,27 +1,26 @@
 import { Injectable } from '@angular/core';
 import data from '../../data/data.json';
-import { job } from '../../Types/Types';
+import { Job } from '../../Types/Types';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map, BehaviorSubject } from 'rxjs';
+import { Observable, map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  
   constructor(private route: ActivatedRoute) {}
 
-  private jobData: job[] = [];
+  private jobData: Job[] = [];
 
-  setJobData(data: job[]): void {
+  setJobData(data: Job[]): void {
     this.jobData = data;
   }
 
-  public getJobData(): job[] {
+  public getJobData(): Job[] {
     return this.jobData;
   }
 
-  public getJobDetails(id: number): job {
+  public getJobDetails(id: number): Job {
     return data[id - 1];
   }
 

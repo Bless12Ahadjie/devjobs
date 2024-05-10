@@ -1,10 +1,10 @@
 import { FilterService } from './filter.service';
-import { job } from '../../Types/Types';
+import { Job } from '../../Types/Types';
 import { TestBed } from '@angular/core/testing';
 
 describe('FilterService', () => {
   let service: FilterService;
-  const jobData: job[] = [
+  const jobData: Job[] = [
     {
       id: 1,
       position: 'Software Engineer',

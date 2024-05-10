@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './shared/layouts/header/header.component';
-import { ApplayoutComponent } from './shared/pages/applayout/applayout.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
+import {HeaderComponent} from './shared/layouts/header/header.component';
+import {ApplayoutComponent} from './shared/pages/applayout/applayout.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

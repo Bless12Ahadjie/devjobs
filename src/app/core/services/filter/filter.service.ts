@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import data from '../../data/data.json';
-import { job } from '../../Types/Types';
+import { Job } from '../../Types/Types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  public jobData: job[] = [];
+  public jobData: Job[] = [];
 
-  public filteredJobsSource = new BehaviorSubject<job[]>([]);
+  public filteredJobsSource = new BehaviorSubject<Job[]>([]);
   public filteredJobsCountSource = new BehaviorSubject<number>(0);
-  filteredJobs$: Observable<job[]> = this.filteredJobsSource.asObservable();
+
+  filteredJobs$: Observable<Job[]> = this.filteredJobsSource.asObservable();
   filteredJobsCount$ = this.filteredJobsCountSource.asObservable();
 
   title = '';
