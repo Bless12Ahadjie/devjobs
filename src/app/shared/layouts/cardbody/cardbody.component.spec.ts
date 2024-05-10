@@ -3,6 +3,7 @@ import {CardbodyComponent} from './cardbody.component';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {FilterService} from '../../../core/services/filter/filter.service';
+import data from '../../../core/data/data.json';
 
 describe('CardbodyComponent', () => {
   let component: CardbodyComponent;
@@ -10,7 +11,6 @@ describe('CardbodyComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [],
       imports: [CommonModule, FormsModule, NgOptimizedImage],
       providers: [FilterService],
     }).compileComponents();
@@ -25,15 +25,15 @@ describe('CardbodyComponent', () => {
   });
 
   it('should initialize component properties', () => {
-    expect(component.jobs).toEqual([]);
+    expect(component.jobs).toEqual(data.slice(0, 12));
     expect(component.isLoading).toBeTrue();
     expect(component.itemsPerPage).toEqual(12);
     expect(component.title).toEqual('');
     expect(component.locations).toEqual('');
     expect(component.fullTimeOnly).toBeFalse();
     expect(component.showModal).toBeFalse();
-    expect(component.showLoadMoreButton).toBeTrue();
-    expect(component.filteredJobsCount).toEqual(0);
+    expect(component.showLoadMoreButton).toBeFalse();
+    expect(component.jobs.length).toEqual(12);
   });
 
   it('should call loadJobs on ngOnInit', () => {

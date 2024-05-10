@@ -23,7 +23,7 @@ export class CardbodyComponent implements OnInit {
   locations = '';
   fullTimeOnly = false;
   showModal = false;
-  showLoadMoreButton: boolean = true;
+  showLoadMoreButton = false;
   filteredJobsCount = 0;
 
   constructor(
