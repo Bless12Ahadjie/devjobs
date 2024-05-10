@@ -1,13 +1,11 @@
-import { TestBed } from '@angular/core/testing';
-import { DataService } from './data.service';
-import { Job } from '../../Types/Types';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { of } from 'rxjs';
-import jobdata from '../../data/data.json';
+import {TestBed} from '@angular/core/testing';
+import {DataService} from './data.service';
+import {Job} from '../../Types/Types';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {of} from 'rxjs';
 
 describe('DataService', () => {
   let service: DataService;
-  let jobData: Job[];
   let activatedRouteMock: any;
 
   beforeEach(() => {
@@ -41,12 +39,6 @@ describe('DataService', () => {
     expect(service.getJobData()).toEqual(data);
   });
 
-
-
-
-
-
-
   it('should get route param as an observable', () => {
     const testParam = 'id';
 
@@ -54,4 +46,5 @@ describe('DataService', () => {
       expect(result).toEqual(1);
     });
   });
+
 });
