@@ -3,7 +3,6 @@ DevJobs (an Amalitech Technical Training Project)
 
 ## Overview
 DevJobs is a job search platform that allows users to view job listings, filter jobs by title, location, and full-time positions, and apply for jobs. This application is built using Angular, TypeScript, Tailwind CSS, and hosted on Vercel.
-
 ## Customer Requirements
 
 - View the optimal layout for each page depending on their device's screen size
