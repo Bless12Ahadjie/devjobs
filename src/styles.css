@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 
-* {
-  @apply transition-colors ;
-}
+
 
 body{
   background-color: #f4f6f8;

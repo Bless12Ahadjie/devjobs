@@ -27,6 +27,8 @@ export class ApplayoutComponent implements OnInit {
     this.filterService.filteredJobs$.subscribe((filteredJobs) => {
       this.jobLength = filteredJobs.length;
     });
+    console.log(this.cardbodyRef?.loadMore.length);
+    
   }
 
   onLoadMore() {

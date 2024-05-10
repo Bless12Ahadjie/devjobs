@@ -38,9 +38,7 @@ export class CardbodyComponent implements OnInit {
     });
 
     this.filterService.filteredJobsCount$.subscribe((count) => {
-      this.filteredJobsCount = count;
-      console.log(this.filteredJobsCount);
-      
+      this.filteredJobsCount = count;      
       this.showLoadMoreButton =  this.itemsPerPage > this.filteredJobsCount ;
     });
   }
