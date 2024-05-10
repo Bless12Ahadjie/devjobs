@@ -23,7 +23,7 @@ export class CardbodyComponent implements OnInit {
   locations = '';
   fullTimeOnly = false;
   showModal = false;
-  showLoadMoreButton = false;
+  showLoadMoreButton = true;
   filteredJobsCount = 0;
 
   constructor(
@@ -39,12 +39,23 @@ export class CardbodyComponent implements OnInit {
 
     this.filterService.filteredJobsCount$.subscribe((count) => {
       this.filteredJobsCount = count;
-      this.showLoadMoreButton = this.filteredJobsCount < this.itemsPerPage;
+      console.log(this.filteredJobsCount);
+      
+      this.showLoadMoreButton =  this.itemsPerPage > this.filteredJobsCount ;
     });
   }
 
   checked() {
     this.fullTimeOnly = !this.fullTimeOnly;
+
+  }
+
+  fulltimeFilter(){
+    if (this.fullTimeOnly){
+      this.filterService.filterJobsByContract(this.fullTimeOnly);
+    }else{
+     this.filterService.filterJobsByContract(this.fullTimeOnly && 'Part Time');
+  }
   }
 
   activateModal() {

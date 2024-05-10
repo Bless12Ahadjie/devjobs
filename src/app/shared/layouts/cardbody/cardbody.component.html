@@ -3,14 +3,14 @@
         class="hidden md:flex justify-center absolute mt-[12px] items-center gap-[20px] lg:gap-[20px] pl-[8px] md:w-[720px] lg:w-[990px] h-[80px] rounded-[6px] bg-white dark:bg-verydarkblack">
         <div class="flex justify-start items-center gap-[16px]">
             <img ngSrc="./assets/desktop/icon-search.svg" alt="search" height="24" width="24">
-            <input [(ngModel)]="title" (keyup.enter)="filterJobs()"
+            <input [(ngModel)]="title" (keyup)="filterJobs()"
                 class="md:w-[105px] lg:w-[268px] dark:bg-verydarkblack focus:outline-none dark:text-white caret-violet"
                 type="text" placeholder="Filter by title, companies, expertise…">
         </div>
         <span class="w-[1px] h-[80px] bg-[#F4F6F8] dark:bg-[#2A3342]"></span>
         <div class="flex justify-start items-center gap-[16px]">
             <img ngSrc="./assets/desktop/icon-location.svg" alt="location" height="24" width="17">
-            <input [(ngModel)]="locations" (keyup.enter)="filterJobs()"
+            <input [(ngModel)]="locations" (keyup)="filterJobs()"
                 class="md:w-[105px] lg:w-[154px] dark:bg-verydarkblack focus:outline-none dark:text-white caret-violet"
                 type="text" placeholder="Filter by location...">
         </div>
@@ -19,7 +19,7 @@
             <label
                 class=" container flex justify-center items-center text-xsm font-bold  text-verydarkblack dark:text-white">
                 Full Time Only
-                <input type="checkbox" onkey (click)="checked()" [(ngModel)]="fullTimeOnly" class="hidden">
+                <input type="checkbox" (change)="fulltimeFilter()" (mousedown)="checked()" [(ngModel)]="fullTimeOnly" class="hidden">
                 <span class="checkmark dark:bg-midnight rounded-[4px] mt-[4px]"></span>
             </label>
         </div>
@@ -61,7 +61,7 @@
                 <label
                     class=" container flex justify-center items-center text-xsm font-bold  text-verydarkblack dark:text-white">
                     Full Time Only
-                    <input type="checkbox" (click)="checked()" [(ngModel)]="fullTimeOnly" class="hidden">
+                    <input type="checkbox" (mousedown)="checked()" [(ngModel)]="fullTimeOnly" class="hidden">
                     <span class="checkmark dark:bg-midnight rounded-[4px] mt-[4px]"></span>
                 </label>
             </div>
