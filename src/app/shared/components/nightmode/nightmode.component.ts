@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'devjobs-nightmode',
@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './nightmode.component.html',
   styleUrl: './nightmode.component.css',
 })
-export class NightmodeComponent {
+export class NightmodeComponent implements OnInit{
   isDarkMode = false;
 
   ngOnInit() {
     this.isDarkMode =
-      localStorage.getItem('isDarkMode') === 'dark' ? true : false;
+      localStorage.getItem('isDarkMode') === 'dark';
     this.applyDarkMode();
   }
 

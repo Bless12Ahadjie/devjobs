@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { ButtonComponent } from '../button/button.component';
-import { DataService } from '../../../core/services/data/data.service';
-import { job } from '../../../core/Types/Types';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {ButtonComponent} from '../button/button.component';
+import {DataService} from '../../../core/services/data/data.service';
+import {Job} from '../../../core/Types/Types';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'devjobs-detailsbody',
@@ -14,16 +13,16 @@ import { CommonModule } from '@angular/common';
   providers: [DataService],
 })
 export class DetailsbodyComponent {
-  details?: job;
+  details?: Job;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.dataService.getRouteParam('id').subscribe((id) => {
       this.details = this.dataService.getJobDetails(id);
     });
   }
-  goToApplyPage(applyLink: string) {
-    this.router.navigate([applyLink]);
-  }
+  // goToApplyPage(applyLink: string) {
+  //   this.router.navigate([applyLink]);
+  // }
 }

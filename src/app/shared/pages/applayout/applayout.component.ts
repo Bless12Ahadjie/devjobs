@@ -1,9 +1,8 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { CardbodyComponent } from '../../layouts/cardbody/cardbody.component';
-import { ButtonComponent } from '../../components/button/button.component';
-import { CommonModule } from '@angular/common';
-import { FilterService } from '../../../core/services/filter/filter.service';
-import { flatMap } from 'rxjs';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {CardbodyComponent} from '../../layouts/cardbody/cardbody.component';
+import {ButtonComponent} from '../../components/button/button.component';
+import {CommonModule} from '@angular/common';
+import {FilterService} from '../../../core/services/filter/filter.service';
 
 @Component({
   selector: 'devjobs-applayout',
@@ -18,10 +17,9 @@ export class ApplayoutComponent implements OnInit {
   @ViewChild(CardbodyComponent, { static: true })
   cardbodyRef?: CardbodyComponent;
 
-  isLoading = false;
+
   jobLength = 0;
-  showLoadMoreButton = false;
-  filteredJobsCount?: number;
+
 
   constructor(private filterService: FilterService) {}
 

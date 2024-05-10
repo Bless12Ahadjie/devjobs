@@ -1,5 +1,5 @@
-import { Component, Input,inject } from '@angular/core';
-import { DataService } from '../../../core/services/data/data.service';
+import {Component, Input} from '@angular/core';
+import {DataService} from '../../../core/services/data/data.service';
 
 @Component({
   selector: 'devjobs-button',
@@ -10,16 +10,9 @@ import { DataService } from '../../../core/services/data/data.service';
   providers: [DataService]
 })
 export class ButtonComponent {
-  dataService = inject ( DataService);
 
   @Input() btnName?: string;
   @Input() href: string | undefined;
- 
 
-     handleClick = () => {}
 
-     filterFullTime() {
-    
-      
-     }
 }

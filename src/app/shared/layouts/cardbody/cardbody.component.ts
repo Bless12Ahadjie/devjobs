@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CardComponent } from '../../components/card/card.component';
 import data from '../../../core/data/data.json';
-import { job } from '../../../core/Types/Types';
-import { CommonModule, Location } from '@angular/common';
-import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { Job } from '../../../core/Types/Types';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { SkeletonComponent } from '../../components/skeleton/skeleton.component';
 import { FilterService } from '../../../core/services/filter/filter.service';
 import { FormsModule } from '@angular/forms';
@@ -11,13 +10,13 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'devjobs-cardbody',
   standalone: true,
-  imports: [CardComponent, CommonModule, SkeletonComponent, FormsModule],
+  imports: [CardComponent, CommonModule, SkeletonComponent, FormsModule, NgOptimizedImage],
   templateUrl: './cardbody.component.html',
   styleUrls: ['./cardbody.component.css'],
   providers: [FilterService],
 })
 export class CardbodyComponent implements OnInit {
-  jobs: job[] = [];
+  jobs: Job[] = [];
   isLoading = true;
   itemsPerPage = 12;
   title = '';
@@ -28,9 +27,6 @@ export class CardbodyComponent implements OnInit {
   filteredJobsCount = 0;
 
   constructor(
-    private location: Location,
-    private router: Router,
-    private route: ActivatedRoute,
     private filterService: FilterService
   ) {}
 
@@ -65,6 +61,7 @@ export class CardbodyComponent implements OnInit {
   loadMore() {
     const currentPage = Math.ceil(this.jobs.length / this.itemsPerPage);
     const startIndex = currentPage * this.itemsPerPage;
+
     const endIndex = Math.min(
       startIndex + this.itemsPerPage,
       this.filterService.jobData.length
