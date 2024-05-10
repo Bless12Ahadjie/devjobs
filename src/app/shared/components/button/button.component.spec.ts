@@ -7,7 +7,7 @@ describe('ButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonComponent]
+      declarations: []
     }).compileComponents();
   });
 
@@ -18,6 +18,7 @@ describe('ButtonComponent', () => {
     component.href = 'https://example.com';
     fixture.detectChanges();
   });
+
 
   it('should create a button element with proper attributes when href is defined', () => {
     const buttonElement = fixture.nativeElement.querySelector('a');

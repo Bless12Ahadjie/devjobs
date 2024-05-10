@@ -1,10 +1,8 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { CardbodyComponent } from './cardbody.component';
-import { CommonModule } from '@angular/common';
-import { SkeletonComponent } from '../../components/skeleton/skeleton.component';
-import { FormsModule } from '@angular/forms';
-import { NgOptimizedImage } from '@angular/common';
-import { FilterService } from '../../../core/services/filter/filter.service';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {CardbodyComponent} from './cardbody.component';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {FilterService} from '../../../core/services/filter/filter.service';
 
 describe('CardbodyComponent', () => {
   let component: CardbodyComponent;
@@ -12,7 +10,7 @@ describe('CardbodyComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CardbodyComponent, SkeletonComponent],
+      declarations: [],
       imports: [CommonModule, FormsModule, NgOptimizedImage],
       providers: [FilterService],
     }).compileComponents();
