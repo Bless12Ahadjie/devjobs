@@ -80,10 +80,4 @@ export class FilterService {
     this.filteredJobsCountSource.next(filteredJobs.length);
   }
 
-  private filterByTitleOrCompany(job: Job): boolean {
-    return (
-      (job.position?.toLowerCase().includes(this.title.toLowerCase()) || false) ||
-      (job.company?.toLowerCase().includes(this.title.toLowerCase()) || false)
-    );
-  }
 }
