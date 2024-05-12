@@ -8,7 +8,6 @@ import { Job } from '../../Types/Types';
 })
 export class FilterService {
   public jobData: Job[] = [];
-
   public filteredJobsSource = new BehaviorSubject<Job[]>([]);
   public filteredJobsCountSource = new BehaviorSubject<number>(0);
 
@@ -23,6 +22,16 @@ export class FilterService {
     this.jobData = data;
     this.filteredJobsSource.next(this.jobData);
     this.filteredJobsCountSource.next(this.jobData.length);
+
+    // Retrieve the filtered job data from the history state
+    const state = history.state?.filterCriteria;
+    if (state) {
+      const { title, location, isFullTime } = state;
+      this.title = title;
+      this.location = location;
+      this.isFullTime = isFullTime;
+      this.applyFilters();
+    }
   }
 
   filterJobsBySearch(searchTerm: string): void {
@@ -44,10 +53,9 @@ export class FilterService {
     let filteredJobs = this.jobData;
 
     if (this.title) {
-      filteredJobs = filteredJobs.filter(
-        (job) =>
-          job.position?.toLowerCase().includes(this.title.toLowerCase()) ||
-          job.company?.toLowerCase().includes(this.title.toLowerCase())
+      filteredJobs = filteredJobs.filter((job) =>
+        job.company?.toLowerCase().includes(this.title.toLowerCase()) ||
+      job.position?.toLowerCase().includes(this.title.toLowerCase())
       );
     }
 
@@ -56,11 +64,20 @@ export class FilterService {
         job.location?.toLowerCase().includes(this.location.toLowerCase())
       );
     }
+
     if (this.isFullTime) {
       filteredJobs = filteredJobs.filter((job) => job.contract === 'Full Time');
     }
 
+    // Store the filtered job data and filter criteria in the history state
+    history.replaceState(
+      { filterCriteria: { title: this.title, location: this.location, isFullTime: this.isFullTime } },
+      '',
+      ''
+    );
+
     this.filteredJobsSource.next(filteredJobs);
     this.filteredJobsCountSource.next(filteredJobs.length);
   }
+
 }

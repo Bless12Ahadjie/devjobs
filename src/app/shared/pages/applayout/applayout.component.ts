@@ -10,7 +10,7 @@ import {FilterService} from '../../../core/services/filter/filter.service';
   imports: [CardbodyComponent, ButtonComponent, CommonModule],
   templateUrl: './applayout.component.html',
   styleUrls: ['./applayout.component.css'],
-  providers: [FilterService],
+  providers: [FilterService,Location],
 })
 export class ApplayoutComponent implements OnInit {
   btnName = 'load more';

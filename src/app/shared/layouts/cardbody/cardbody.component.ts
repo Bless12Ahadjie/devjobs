@@ -70,19 +70,22 @@ export class CardbodyComponent implements OnInit {
   loadMore() {
     const currentPage = Math.ceil(this.jobs.length / this.itemsPerPage);
     const startIndex = currentPage * this.itemsPerPage;
-
     const endIndex = Math.min(
       startIndex + this.itemsPerPage,
       this.filterService.jobData.length
     );
-
+  
     if (startIndex < endIndex) {
       const newJobs = this.filterService.jobData.slice(startIndex, endIndex);
       this.jobs = [...this.jobs, ...newJobs];
+  
+      // Store the updated job list in the history state
+      history.replaceState({ jobs: this.jobs }, '', '');
     }
-
+  
     const element = document.getElementById('element-id');
     const distanceFromTop = element?.getBoundingClientRect().top;
+  
     window.scrollTo({
       top: distanceFromTop,
       behavior: 'smooth',
