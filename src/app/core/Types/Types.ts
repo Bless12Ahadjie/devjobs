@@ -19,3 +19,11 @@ export interface Job {
     items: Array<string>;
   };
 }
+
+export interface HistoryState {
+  filterCriteria?: {
+    title: string;
+    location: string;
+    isFullTime: boolean;
+  };
+}
