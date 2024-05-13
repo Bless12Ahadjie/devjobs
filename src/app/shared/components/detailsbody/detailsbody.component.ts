@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {ButtonComponent} from '../button/button.component';
 import {DataService} from '../../../core/services/data/data.service';
 import {Job} from '../../../core/Types/Types';
@@ -12,17 +12,15 @@ import {CommonModule} from '@angular/common';
   styleUrl: './detailsbody.component.css',
   providers: [DataService],
 })
-export class DetailsbodyComponent {
+export class DetailsbodyComponent implements OnInit{
   details?: Job;
 
-  constructor(private dataService: DataService) {}
+  private dataService = inject(DataService)
 
   ngOnInit() {
     this.dataService.getRouteParam('id').subscribe((id) => {
       this.details = this.dataService.getJobDetails(id);
     });
   }
-  // goToApplyPage(applyLink: string) {
-  //   this.router.navigate([applyLink]);
-  // }
+
 }

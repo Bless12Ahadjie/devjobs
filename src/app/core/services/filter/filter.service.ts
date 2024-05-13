@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import data from '../../data/data.json';
-import { Job } from '../../Types/Types';
+import {Job} from '../../Types/Types';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +55,7 @@ export class FilterService {
     if (this.title) {
       filteredJobs = filteredJobs.filter((job) =>
         job.company?.toLowerCase().includes(this.title.toLowerCase()) ||
-      job.position?.toLowerCase().includes(this.title.toLowerCase())
+        job.position?.toLowerCase().includes(this.title.toLowerCase())
       );
     }
 
