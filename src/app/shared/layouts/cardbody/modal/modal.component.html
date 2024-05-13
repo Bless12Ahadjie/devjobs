@@ -1,0 +1,27 @@
+<div
+  class=" fixed inset-0 z-50 flex items-center justify-center bg-modalOverlayDark dark:bg-modalOverlayDark bg-opacity-50">
+  <div
+    class="flex flex-col justify-center h-[217px] w-[327px] items-center  bg-white dark:bg-verydarkblack rounded-lg p-6 shadow-lg">
+    <div class="flex justify-start items-center gap-[20px] ml-[-30px]">
+      <img ngSrc="./assets/desktop/icon-location.svg" alt="location" height="24" width="17">
+      <input [ngModel]="ngModel"
+             (ngModelChange)="ngModelChange.emit($event)" (keyup.enter)="filterJobs()"
+             class="md:w-[105px] lg:w-[154px] dark:bg-verydarkblack focus:outline-none dark:text-white caret-violet"
+             type="text" placeholder="Filter by location..."/>
+    </div>
+    <div class="w-[327px] h-[1px] bg-[#F4F6F8] dark:bg-[#2A3342] mb-[30px] mt-[20px]"></div>
+    <div class="ml-[-80px]">
+      <label
+        class=" container flex justify-center items-center text-xsm font-bold  text-verydarkblack dark:text-white">
+        Full Time Only
+        <input type="checkbox" (mousedown)="checked()" [ngModel]="ngModel_1"
+               (ngModelChange)="ngModel_1Change.emit($event)" class="hidden">
+        <span class="checkmark dark:bg-midnight rounded-[4px] mt-[4px]"></span>
+      </label>
+    </div>
+    <button (click)="filterJobs(); showModal = false"
+            class="mt-6 w-[279px] bg-violet text-white px-4 py-2 rounded">
+      Search
+    </button>
+  </div>
+</div>

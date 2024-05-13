@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { CardComponent } from '../../components/card/card.component';
+import {Component, OnInit} from '@angular/core';
+import {CardComponent} from '../../components/card/card.component';
 import data from '../../../core/data/data.json';
-import { Job } from '../../../core/Types/Types';
+import {Job} from '../../../core/Types/Types';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
-import { SkeletonComponent } from '../../components/skeleton/skeleton.component';
-import { FilterService } from '../../../core/services/filter/filter.service';
-import { FormsModule } from '@angular/forms';
+import {SkeletonComponent} from '../../components/skeleton/skeleton.component';
+import {FilterService} from '../../../core/services/filter/filter.service';
+import {FormsModule} from '@angular/forms';
+import {ModalComponent} from "./modal/modal.component";
 
 @Component({
   selector: 'devjobs-cardbody',
   standalone: true,
-  imports: [CardComponent, CommonModule, SkeletonComponent, FormsModule, NgOptimizedImage],
+  imports: [CardComponent, CommonModule, SkeletonComponent, FormsModule, NgOptimizedImage,ModalComponent],
   templateUrl: './cardbody.component.html',
   styleUrls: ['./cardbody.component.css'],
   providers: [FilterService],
@@ -38,7 +39,7 @@ export class CardbodyComponent implements OnInit {
     });
 
     this.filterService.filteredJobsCount$.subscribe((count) => {
-      this.filteredJobsCount = count;      
+      this.filteredJobsCount = count;
       this.showLoadMoreButton =  this.itemsPerPage > this.filteredJobsCount ;
     });
   }
@@ -74,18 +75,18 @@ export class CardbodyComponent implements OnInit {
       startIndex + this.itemsPerPage,
       this.filterService.jobData.length
     );
-  
+
     if (startIndex < endIndex) {
       const newJobs = this.filterService.jobData.slice(startIndex, endIndex);
       this.jobs = [...this.jobs, ...newJobs];
-  
+
       // Store the updated job list in the history state
       history.replaceState({ jobs: this.jobs }, '', '');
     }
-  
+
     const element = document.getElementById('element-id');
     const distanceFromTop = element?.getBoundingClientRect().top;
-  
+
     window.scrollTo({
       top: distanceFromTop,
       behavior: 'smooth',
@@ -115,4 +116,6 @@ export class CardbodyComponent implements OnInit {
   hideLoadMoreButton() {
     this.showLoadMoreButton = false;
   }
+
+
 }

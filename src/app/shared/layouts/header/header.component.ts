@@ -9,5 +9,7 @@ import { NightmodeComponent } from '../../components/nightmode/nightmode.compone
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  navigateToHome(){
+    window.location.href = '';
+  }
 }
