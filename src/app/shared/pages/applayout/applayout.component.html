@@ -6,7 +6,7 @@
         @if (cardbodyRef.jobs.length >= jobLength || cardbodyRef.showLoadMoreButton  ) {
 
         }@else {
-        <button #loadMoreButton id="loadMoreButton"
+        <button  id="loadMoreButton"
             class="w-[123px] h-[48px] rounded-[5px] bg-violet text-white font-bold hover:bg-lightvioler"
             (click)="onLoadMore()">
             {{btnName | titlecase}}

@@ -2,13 +2,15 @@ import {TestBed} from '@angular/core/testing';
 import {DataService} from './data.service';
 import {Job} from '../../Types/Types';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 describe('DataService', () => {
   let service: DataService;
-  let activatedRouteMock: any;
+  let activatedRouteMock:  { paramMap: Observable<ParamMap>; };
 
+  // executed before each spec (test)
   beforeEach(() => {
+    // return a fixed value '1' for any parameter when paramMap is accessed
     activatedRouteMock = {
       paramMap: of({
         get: (param: string) => '1'
@@ -24,6 +26,7 @@ describe('DataService', () => {
     service = TestBed.inject(DataService);
   });
 
+
   it('should correctly set data to job data', () => {
     const data: Job[] = [
       {
@@ -33,7 +36,6 @@ describe('DataService', () => {
         location: 'New York',
         contract: 'Full Time',
       },
-      // Add more job data as needed
     ];
     service.setJobData(data);
     expect(service.getJobData()).toEqual(data);

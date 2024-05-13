@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject,OnInit} from '@angular/core';
 import {ButtonComponent} from '../button/button.component';
 import {Job} from '../../../core/Types/Types';
 import {DataService} from '../../../core/services/data/data.service';
@@ -11,10 +11,10 @@ import {DataService} from '../../../core/services/data/data.service';
   styleUrl: './detailsfooter.component.css',
   providers:[DataService]
 })
-export class DetailsfooterComponent {
+export class DetailsfooterComponent implements OnInit{
   details?: Job ;
 
-  constructor( private dataService: DataService ) {}
+  private dataService = inject(DataService)
 
   ngOnInit() {
     this.dataService.getRouteParam('id').subscribe(id => {

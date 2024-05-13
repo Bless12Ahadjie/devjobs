@@ -3,13 +3,14 @@ import data from '../../data/data.json';
 import { Job } from '../../Types/Types';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map} from 'rxjs';
+import {inject} from "@angular/core";
 
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
-  constructor(private route: ActivatedRoute) {}
 
+export class DataService {
+  private route = inject(ActivatedRoute);
   private jobData: Job[] = [];
 
   setJobData(data: Job[]): void {

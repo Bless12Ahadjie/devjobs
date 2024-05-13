@@ -11,7 +11,5 @@ import { DetailsfooterComponent } from '../../components/detailsfooter/detailsfo
   styleUrl: './jobdetails.component.css'
 })
 export class JobdetailsComponent {
-  goBack(){
-    window.history.back();
-  }
+
 }

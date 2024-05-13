@@ -1,10 +1,11 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'devjobs-modal',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgOptimizedImage],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
